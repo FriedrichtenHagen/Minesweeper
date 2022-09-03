@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.background{
+
+    background-color: aliceblue;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px;
+    
+}
+.gridItem{
+    background-color: cadetblue;
+    border: 1px solid black;
+    margin: 0px;
+    flex-shrink: 0;
+    
+}
+.marked{
+    background-color: bisque;
+    border: 1px solid black;
+    margin: 0px;
+    flex-shrink: 0;
+}
