@@ -20,8 +20,20 @@ body{
     flex-shrink: 0;
     
 }
-.marked{
+.sweeped{
     background-color: bisque;
+    border: 1px solid black;
+    margin: 0px;
+    flex-shrink: 0;
+}
+.marked{
+    background-color: rgb(254, 12, 4);
+    border: 1px solid black;
+    margin: 0px;
+    flex-shrink: 0;
+}
+.bomb{
+
     border: 1px solid black;
     margin: 0px;
     flex-shrink: 0;
