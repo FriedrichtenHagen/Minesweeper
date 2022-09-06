@@ -59,29 +59,32 @@ function calculateAdjBombs(){
     let adjBombs = 0
     for(let c=0; c<maxSquares; c++){
 
-        /*
-        let a=c-17
-        let b=c-16
-        let c=c-15
-        let d=c-1
-        let e=c+1
-        let f=c+15
-        let g=c+16
-        let h=c+17
-        */
-        let surroundingArray = [c-17,c-16,c-15,c-1,c+1,c+15,c+16,c+17]
+        adjBombs=0 //reset bombcounter
+
+        let a1=c-17
+        let b1=c-16
+        let c1=c-15
+        let d1=c-1
+        let e1=c+1
+        let f1=c+15
+        let g1=c+16
+        let h1=c+17
         
-        for(let sI = 0; sI<surroundingArray.lenght; sI++){
-            console.log(grids[surroundingArray[sI]])
-            if(grids[surroundingArray[sI]].classList[1] === "bomb"){
+        let surroundingArray = [a1,b1,c1,d1,e1,f1,g1,h1]
+        console.log("current fieldID: "+ c)
+        for(let sI = 0; sI<surroundingArray.length; sI++){
+            let g = surroundingArray[sI]
+            console.log("neighboring fieldID: " +g +" Neighborarrypos "+ sI)
+            if(grids[g]!=undefined && grids[g].classList[1] === "bomb"){
                 adjBombs++
                 console.log("Bombs: "+adjBombs)
-                grids[c].textContent = adjBombs
+                
             }
             else{
-                console.log("didnt work")
+                console.log("not a bomb")
             }   
         }
+        grids[c].textContent = adjBombs
     }
 }
 
