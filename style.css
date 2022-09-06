@@ -21,6 +21,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: transparent;
     
 }
 .sweeped{
@@ -28,6 +29,8 @@ body{
     border: 1px solid black;
     margin: 0px;
     flex-shrink: 0;
+    color: black;
+
 }
 .marked{
     background-color: rgb(254, 12, 4);

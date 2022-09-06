@@ -38,7 +38,7 @@ function fillBackground(){
 }
 
 function plantBombs(){
-    let bombNumber = Math.floor(Math.random()*20)+50
+    let bombNumber = Math.floor(Math.random()*20)+20
 
 
     let gridItems = document.querySelectorAll(".gridItem")
@@ -84,6 +84,7 @@ function calculateAdjBombs(){
                 console.log("not a bomb")
             }   
         }
+        grids[c].classList.add(`${adjBombs}`)
         grids[c].textContent = adjBombs
     }
 }
