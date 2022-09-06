@@ -35,7 +35,6 @@ function fillBackground(){
             e.preventDefault()
         })
     }
-    calculateAdjBombs()
 }
 
 function plantBombs(){
@@ -56,37 +55,24 @@ function explosionCheck(gridItem){
     }
 }
 function calculateAdjBombs(){
-    let gridItems = document.querySelectorAll(".gridItem")
+    let grids = document.querySelectorAll(".gridItem")
     let adjBombs = 0
     for(let c=0; c<maxSquares; c++){
-        
-        console.log(c-17)
-        let adj1 = document.getElementById(`${(c-17)}`)
-        if(adj1 === null){
-            console.log("field not existant")
+        if(grids[c].classList[1] === "bomb"){
+            console.log("Bombs: "+adjBombs)
+            grids[c].textContent = "B"
         }
         else{
-            if(adj1.classList[1]=== "bomb"){
-                adjBombs++
-                console.log(adj1 + adjBombs)
-            }
+            console.log(grids[c].classList[1])
 
-        }
-
-        let gridItemByID = document.getElementById(`${c}`)
-        gridItemByID.textContent = `${adjBombs}`
+            grids[c].textContent = c
+        }   
     }
-    
-    //gridItems.forEach(gridItem => {
-
-
-
-
-    
 }
+
 
 
 setBackground()
 fillBackground()
 plantBombs()
-
+calculateAdjBombs()
