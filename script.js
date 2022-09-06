@@ -58,15 +58,30 @@ function calculateAdjBombs(){
     let grids = document.querySelectorAll(".gridItem")
     let adjBombs = 0
     for(let c=0; c<maxSquares; c++){
-        if(grids[c].classList[1] === "bomb"){
-            console.log("Bombs: "+adjBombs)
-            grids[c].textContent = "B"
-        }
-        else{
-            console.log(grids[c].classList[1])
 
-            grids[c].textContent = c
-        }   
+        /*
+        let a=c-17
+        let b=c-16
+        let c=c-15
+        let d=c-1
+        let e=c+1
+        let f=c+15
+        let g=c+16
+        let h=c+17
+        */
+        let surroundingArray = [c-17,c-16,c-15,c-1,c+1,c+15,c+16,c+17]
+        
+        for(let sI = 0; sI<surroundingArray.lenght; sI++){
+            console.log(grids[surroundingArray[sI]])
+            if(grids[surroundingArray[sI]].classList[1] === "bomb"){
+                adjBombs++
+                console.log("Bombs: "+adjBombs)
+                grids[c].textContent = adjBombs
+            }
+            else{
+                console.log("didnt work")
+            }   
+        }
     }
 }
 
