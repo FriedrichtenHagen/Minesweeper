@@ -2,8 +2,6 @@ const background = document.querySelector("div")
 const inputBackgroundSize = document.querySelector("input.backgroundSize")
 const inputSideSquares = document.querySelector("input.sideSquares")
 
-
-
 function setBackground(){
     background.style.height = `${backgroundSize}px`
     background.style.width = `${backgroundSize}px`
@@ -58,27 +56,42 @@ function calculateAdjBombs(){
     let grids = document.querySelectorAll(".gridItem")
     let adjBombs = 0
     for(let c=0; c<maxSquares; c++){
-
         adjBombs=0 //reset bombcounter
-
-        let a1=c-17
+        let a1=c-17 //set adjacent fields
         let b1=c-16
-        let c1=c-15
-        let d1=c-1
-        let e1=c+1
+        let c1=c-15 // abc
+        let d1=c-1  // dXe
+        let e1=c+1  // fgh
         let f1=c+15
         let g1=c+16
         let h1=c+17
-        
-        let surroundingArray = [a1,b1,c1,d1,e1,f1,g1,h1]
-        console.log("current fieldID: "+ c)
+
+        //edge case left border of matrix
+        if(c===0 || c%16===0){
+            let surroundingArrayLeft = [b1,c1,e1,g1,h1]
+            checkAdjFields(surroundingArrayLeft, c, adjBombs)
+        }
+        else if(c===15 || c===31 || c===47 || c===63 || c===79 || c===95|| c===111 || c===127||c===143||c===159||c===175||c===191||c===207||c===223||c===239||c===255){
+            let surroundingArrayRight = [a1,b1,d1,f1,g1]
+            checkAdjFields(surroundingArrayRight, c, adjBombs)
+        }
+        else{
+            //regular case (middle of the matrix)
+            let surroundingArrayMiddle = [a1,b1,c1,d1,e1,f1,g1,h1]
+            checkAdjFields(surroundingArrayMiddle, c, adjBombs)
+        }
+    }
+}
+
+function checkAdjFields(surroundingArray, c, adjBombs){
+    let grids = document.querySelectorAll(".gridItem")
+    console.log("current fieldID: "+ c)
         for(let sI = 0; sI<surroundingArray.length; sI++){
             let g = surroundingArray[sI]
             console.log("neighboring fieldID: " +g +" Neighborarrypos "+ sI)
             if(grids[g]!=undefined && grids[g].classList[1] === "bomb"){
                 adjBombs++
-                console.log("Bombs: "+adjBombs)
-                
+                console.log("Bombs: "+adjBombs)  
             }
             else{
                 console.log("not a bomb")
@@ -86,9 +99,7 @@ function calculateAdjBombs(){
         }
         grids[c].classList.add(`${adjBombs}`)
         grids[c].textContent = adjBombs
-    }
 }
-
 
 
 setBackground()
