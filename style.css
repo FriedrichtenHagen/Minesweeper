@@ -3,6 +3,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(243, 243, 134);
 }
 .background{
 
@@ -25,7 +26,7 @@ body{
     
 }
 .sweeped{
-    background-color: bisque;
+    background-color: rgb(243, 243, 134);
     border: 1px solid black;
     margin: 0px;
     flex-shrink: 0;
@@ -33,7 +34,7 @@ body{
 
 }
 .marked{
-    background-color: rgb(254, 12, 4);
+    background-color: rgb(246, 116, 112);
     border: 1px solid black;
     margin: 0px;
     flex-shrink: 0;
