@@ -26,11 +26,13 @@ function fillBackground(){
                 gridItem.classList.toggle("sweeped")
                 gridItem.classList.remove("marked")
             }
+            checkForSuccess()
         })
         gridItem.addEventListener("contextmenu", e => {
             gridItem.classList.toggle("marked")
             gridItem.classList.remove("sweeped")
             e.preventDefault()
+            checkForSuccess()
         })
     }
 }
@@ -85,20 +87,35 @@ function calculateAdjBombs(){
 
 function checkAdjFields(surroundingArray, c, adjBombs){
     let grids = document.querySelectorAll(".gridItem")
-    console.log("current fieldID: "+ c)
+    // console.log("current fieldID: "+ c)
         for(let sI = 0; sI<surroundingArray.length; sI++){
             let g = surroundingArray[sI]
-            console.log("neighboring fieldID: " +g +" Neighborarrypos "+ sI)
+            // console.log("neighboring fieldID: " +g +" Neighborarrypos "+ sI)
             if(grids[g]!=undefined && grids[g].classList[1] === "bomb"){
                 adjBombs++
-                console.log("Bombs: "+adjBombs)  
+                // console.log("Bombs: "+adjBombs)  
             }
             else{
-                console.log("not a bomb")
+                // console.log("not a bomb")
             }   
         }
         grids[c].classList.add(`${adjBombs}`)
         grids[c].textContent = adjBombs
+}
+function checkForSuccess(){
+    let fields = document.querySelectorAll(".gridItem")
+    let successCounter = 0
+    for(let s=0; s<fields.length; s++){
+        if((fields[s].classList[1]=== "bomb" && fields[s].classList[3]=== "marked") || (fields[s].classList[2]=== "sweeped")) {
+            //bomb is correctly marked
+            successCounter++
+        }
+    }
+    if(successCounter===256){
+        alert("YOU WON! CONGRATULATIONS")
+    }
+    console.log("finished: "+successCounter)
+    console.log("not finished: "+(256-successCounter))
 }
 
 
