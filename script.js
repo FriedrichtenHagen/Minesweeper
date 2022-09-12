@@ -48,8 +48,12 @@ function plantBombs(){
         gridItems[bombPos].classList.add("bomb")
     }
 }
+
+var bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
+
 function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
+        bombAudio.play();
         alert("THAT WAS A BOMB!")
         return true
     }
@@ -119,7 +123,7 @@ function checkForSuccess(){
 }
 
 // TODO: 
-// function that automatically sweeps all "zero fields"
+// function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
 // function that plays sound effect on bomb click
 // function that animates all bombs as growing explosions on bomb click
 // fix the highlight bug (user can highlight all fields and see the hidden bomb number)
