@@ -118,6 +118,11 @@ function checkForSuccess(){
     console.log("not finished: "+(256-successCounter))
 }
 
+// TODO: 
+// function that automatically sweeps all "zero fields"
+// function that plays sound effect on bomb click
+// function that animates all bombs as growing explosions on bomb click
+// fix the highlight bug (user can highlight all fields and see the hidden bomb number)
 
 setBackground()
 fillBackground()
