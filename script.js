@@ -53,6 +53,7 @@ var bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
 
 function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
+        bombAudio.currentTime = 0;
         bombAudio.play();
         alert("THAT WAS A BOMB!")
         return true
