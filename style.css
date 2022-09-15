@@ -45,3 +45,7 @@ body{
     margin: 0px;
     flex-shrink: 0;
 }
+.explosion{
+  font-size: larger;
+  z-index: 2;
+}

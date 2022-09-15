@@ -55,7 +55,7 @@ function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
         bombAudio.currentTime = 0;
         bombAudio.play();
-        alert("THAT WAS A BOMB!")
+       // alert("THAT WAS A BOMB!")
         letBombsExplode()
         return true
     }
@@ -126,8 +126,20 @@ function checkForSuccess(){
 
 function letBombsExplode(){
     let bombFields = document.querySelectorAll(".bomb")
-    bombFields.forEach(bomb => {bomb.textContent = "💣"})
+    bombFields.forEach(bomb => {
+        bomb.textContent = "💣"
+        bomb.style.color= "black"
+    })
     // make bombs explode and grow to fill the screen
+        var delayInMilliseconds = 1000; //1 second
+        setTimeout(function() {
+            bombFields.forEach(bomb => {
+                bomb.textContent = "💥"
+                bomb.style.fontSize = "50px" 
+            })
+                 
+        }, delayInMilliseconds);
+
 }
 
 // TODO: 
