@@ -131,7 +131,7 @@ function letBombsExplode(){
         bomb.style.color= "black"
     })
     // make bombs explode and grow to fill the screen
-        var delayInMilliseconds = 1000; //1 second
+        var delayInMilliseconds = 500;
         setTimeout(function() {
             bombFields.forEach(bomb => {
                 bomb.textContent = "💥"
@@ -146,6 +146,7 @@ function letBombsExplode(){
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
 // function that animates all bombs as growing explosions on bomb click
 // fix the highlight bug (user can highlight all fields and see the hidden bomb number)
+// add a div that displays a GAME OVER Message. Include the possibility of restarting
 
 setBackground()
 fillBackground()
