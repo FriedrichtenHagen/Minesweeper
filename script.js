@@ -56,6 +56,7 @@ function explosionCheck(gridItem){
         bombAudio.currentTime = 0;
         bombAudio.play();
         alert("THAT WAS A BOMB!")
+        letBombsExplode()
         return true
     }
 }
@@ -123,9 +124,14 @@ function checkForSuccess(){
     console.log("not finished: "+(256-successCounter))
 }
 
+function letBombsExplode(){
+    let bombFields = document.querySelectorAll(".bomb")
+    bombFields.forEach(bomb => {bomb.textContent = "💣"})
+    // make bombs explode and grow to fill the screen
+}
+
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
-// function that plays sound effect on bomb click
 // function that animates all bombs as growing explosions on bomb click
 // fix the highlight bug (user can highlight all fields and see the hidden bomb number)
 
