@@ -23,6 +23,7 @@ body{
     justify-content: center;
     align-items: center;
     color: transparent;
+    font-size: 0px;
     
 }
 .sweeped{
@@ -31,6 +32,7 @@ body{
     margin: 0px;
     flex-shrink: 0;
     color: black;
+    font-size: medium;
 
 }
 .marked{

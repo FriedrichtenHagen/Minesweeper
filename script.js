@@ -142,7 +142,6 @@ function letBombsExplode(){
 
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
-// fix the highlight bug (user can highlight all fields and see the hidden bomb number)
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
 
