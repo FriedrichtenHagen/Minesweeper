@@ -144,6 +144,7 @@ function letBombsExplode(){
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
+// add timer and display of leftover bombs
 
 setBackground()
 fillBackground()
