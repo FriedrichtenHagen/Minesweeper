@@ -167,6 +167,9 @@ function fillOutZeros(startId){
                 divOfcurrentField.classList.add("sweeped")
                 fillOutZeros(currentField)
             } 
+            else if(adjBombsOfCurrentField !== "0" && !(divOfcurrentField.classList[2]==="sweeped")){
+                divOfcurrentField.classList.add("sweeped")
+            }
         }
         else{
             console.log("not in range:"+ currentField)
