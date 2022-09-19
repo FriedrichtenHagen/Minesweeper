@@ -21,9 +21,10 @@ function fillBackground(){
         gridItem.style.width = `${gridItemWidth}px`
         gridItem.addEventListener("click", e => {
             if(!explosionCheck(gridItem)){
-                //  if(gridItem.classlist[1]=== "0"){
-                //      fillOutZeros  
-                //  }
+                if(gridItem.classList[1]=== "0"){
+                    let startId = gridItem.getAttribute("id")  
+                    fillOutZeros(startId)  
+                }
                 gridItem.classList.toggle("sweeped")
                 gridItem.classList.remove("marked")
             }
@@ -137,16 +138,41 @@ function letBombsExplode(){
             })                
         }, delayInMilliseconds);
 }
-function fillOutZeros(){
-// this function should be called when a clicked field is not a bomb and has zero adjBombs
-// this starts our recursion: start in upper left corner
-// go through all adjFields (exclude the edge cases)
-// edge cases: !(adjField<256 && adjField>0) then skip field 
-// if adjBombs === 0 (if already revealed, skip) repeat function from this position, else reveal textContent go to next field
-// if already revealed, skip
-//
-}
+function fillOutZeros(startId){
+    // this function should be called when a clicked field is not a bomb and has zero adjBombs
+    // this starts our recursion: start in upper left corner
+    // go through all adjFields (exclude the edge cases)
+    // edge cases: !(adjField<256 && adjField>0) then skip field 
+    // if adjBombs === 0 (if already revealed, skip) repeat function from this position, else reveal textContent go to next field
+    // if already revealed, skip
+    console.log("ID is"+startId)
+    let a1=startId-17 //set adjacent fields
+    let b1=startId-16
+    let c1=startId-15 // abc
+    let d1=startId-1  // d(id)e
+    let e1=startId+1  // fgh
+    let f1=startId+15
+    let g1=startId+16
+    let h1=startId+17
+    let surroundingField = [a1,b1,c1,d1,e1,f1,g1,h1]
 
+    for(let g = 0; g<surroundingField.length; g++){
+        let currentField = surroundingField[g]
+        if(currentField<256 && currentField>0){
+            // current Field is not part of the matrix
+            let divOfcurrentField = document.querySelector(`#${CSS.escape(currentField)}`)
+            console.log(divOfcurrentField)
+            let adjBombsOfCurrentField = divOfcurrentField.classList[1]
+            if(adjBombsOfCurrentField === "0" && !(divOfcurrentField.classList[2]==="sweeped")){
+                divOfcurrentField.classList.add("sweeped")
+                fillOutZeros(currentField)
+            } 
+        }
+        else{
+            console.log("not in range:"+ currentField)
+        }
+    }
+}
 
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
