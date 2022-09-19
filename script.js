@@ -119,8 +119,6 @@ function checkForSuccess(){
     if(successCounter===256){
         alert("YOU WON! CONGRATULATIONS")
     }
-    console.log("finished: "+successCounter)
-    console.log("not finished: "+(256-successCounter))
 }
 
 function letBombsExplode(){
@@ -163,11 +161,12 @@ function fillOutZeros(startId){
             let divOfcurrentField = document.querySelector(`#${CSS.escape(currentField)}`)
             console.log(divOfcurrentField)
             let adjBombsOfCurrentField = divOfcurrentField.classList[1]
-            if(adjBombsOfCurrentField === "0" && !(divOfcurrentField.classList[2]==="sweeped")){
+            if(adjBombsOfCurrentField === "0" && !(divOfcurrentField.classList[2]==="sweeped") && divOfcurrentField.classList[1] !== "bomb"){
                 divOfcurrentField.classList.add("sweeped")
+                divOfcurrentField.textContent=" "
                 fillOutZeros(currentField)
             } 
-            else if(adjBombsOfCurrentField !== "0" && !(divOfcurrentField.classList[2]==="sweeped")){
+            else if(adjBombsOfCurrentField !== "0" && !(divOfcurrentField.classList[2]==="sweeped") && divOfcurrentField.classList[1] !== "bomb"){
                 divOfcurrentField.classList.add("sweeped")
             }
         }
