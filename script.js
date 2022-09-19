@@ -156,7 +156,7 @@ function fillOutZeros(startId){
 
     for(let g = 0; g<surroundingField.length; g++){
         let currentField = surroundingField[g]
-        if(currentField<256 && currentField>0){
+        if(currentField<256 && currentField>=0){
             // current Field is not part of the matrix
             let divOfcurrentField = document.querySelector(`#${CSS.escape(currentField)}`)
             console.log(divOfcurrentField)
@@ -178,6 +178,7 @@ function fillOutZeros(startId){
 
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
+    // bugs: upper left corner, reclicking and marking fields, sweeping the clicked field
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
 // add timer and display of leftover bombs
