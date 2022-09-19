@@ -21,6 +21,9 @@ function fillBackground(){
         gridItem.style.width = `${gridItemWidth}px`
         gridItem.addEventListener("click", e => {
             if(!explosionCheck(gridItem)){
+                //  if(gridItem.classlist[1]=== "0"){
+                //      fillOutZeros  
+                //  }
                 gridItem.classList.toggle("sweeped")
                 gridItem.classList.remove("marked")
             }
@@ -134,6 +137,16 @@ function letBombsExplode(){
             })                
         }, delayInMilliseconds);
 }
+function fillOutZeros(){
+// this function should be called when a clicked field is not a bomb and has zero adjBombs
+// this starts our recursion: start in upper left corner
+// go through all adjFields (exclude the edge cases)
+// edge cases: !(adjField<256 && adjField>0) then skip field 
+// if adjBombs === 0 (if already revealed, skip) repeat function from this position, else reveal textContent go to next field
+// if already revealed, skip
+//
+}
+
 
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
