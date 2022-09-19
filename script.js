@@ -1,17 +1,15 @@
 const background = document.querySelector("div")
-const inputBackgroundSize = document.querySelector("input.backgroundSize")
-const inputSideSquares = document.querySelector("input.sideSquares")
-
-function setBackground(){
-    background.style.height = `${backgroundSize}px`
-    background.style.width = `${backgroundSize}px`
-}
 let backgroundSize = 400
 let sideSquares = 16
 let maxSquares = sideSquares*sideSquares
 let subtractBorder = sideSquares*2
 let gridItemHeight = ((backgroundSize-subtractBorder)/sideSquares)
 let gridItemWidth = ((backgroundSize-subtractBorder)/sideSquares)
+
+function setBackground(){
+    background.style.height = `${backgroundSize}px`
+    background.style.width = `${backgroundSize}px`
+}
 
 function fillBackground(){
     for(let i=0; i<maxSquares; i++){
@@ -39,8 +37,6 @@ function fillBackground(){
 
 function plantBombs(){
     let bombNumber = Math.floor(Math.random()*20)+20
-
-
     let gridItems = document.querySelectorAll(".gridItem")
 
     for(let b=0; b<bombNumber; b++){
@@ -55,7 +51,6 @@ function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
         bombAudio.currentTime = 0;
         bombAudio.play();
-       // alert("THAT WAS A BOMB!")
         letBombsExplode()
         return true
     }
