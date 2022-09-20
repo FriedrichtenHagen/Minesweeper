@@ -21,12 +21,13 @@ function fillBackground(){
         gridItem.style.width = `${gridItemWidth}px`
         gridItem.addEventListener("click", e => {
             if(!explosionCheck(gridItem)){
-                if(gridItem.classList[1]=== "0"){
-                    let startId = gridItem.getAttribute("id")  
-                    fillOutZeros(startId)  
-                }
                 gridItem.classList.toggle("sweeped")
                 gridItem.classList.remove("marked")
+                if(gridItem.classList[1]=== "0"){
+                    let startId = gridItem.getAttribute("id") 
+                    fillOutZeros(startId) 
+                    gridItem.textContent = " " 
+                }
             }
             checkForSuccess()
         })
@@ -143,6 +144,8 @@ function fillOutZeros(startId){
     // edge cases: !(adjField<256 && adjField>0) then skip field 
     // if adjBombs === 0 (if already revealed, skip) repeat function from this position, else reveal textContent go to next field
     // if already revealed, skip
+
+
     console.log("ID is"+startId)
     let a1=startId-17 //set adjacent fields
     let b1=startId-16
@@ -161,6 +164,7 @@ function fillOutZeros(startId){
             let divOfcurrentField = document.querySelector(`#${CSS.escape(currentField)}`)
             console.log(divOfcurrentField)
             let adjBombsOfCurrentField = divOfcurrentField.classList[1]
+
             if(adjBombsOfCurrentField === "0" && !(divOfcurrentField.classList[2]==="sweeped") && divOfcurrentField.classList[1] !== "bomb"){
                 divOfcurrentField.classList.add("sweeped")
                 divOfcurrentField.textContent=" "
