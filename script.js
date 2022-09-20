@@ -48,6 +48,8 @@ function fillBackground(){
 function plantBombs(){
     let bombNumber = Math.floor(Math.random()*20)+20
     let gridItems = document.querySelectorAll(".gridItem")
+    let bombNumField = document.querySelector(".bombNum")
+    bombNumField.textContent = bombNumber
 
     for(let b=0; b<bombNumber; b++){
         let bombPos = Math.floor(Math.random()*maxSquares)
@@ -187,7 +189,7 @@ function fillOutZeros(startId){
 
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
-    // bugs: upper left corner, reclicking and marking fields, sweeping the clicked field
+    // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
 // add timer and display of leftover bombs

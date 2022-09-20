@@ -5,13 +5,23 @@ body{
     align-items: center;
    /* background-color:rgb(250 211 210);*/
     background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(247, 179, 179));
-    margin-top: 50px;
+    margin-top: 20px;
 }
 .header{
     height: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.bombNumber, .timer{
+    padding: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.bombNumber{
+    display: flex;
+}
+.bombNum{
+    margin-left: 5px;
 }
 .background{
     
