@@ -1,5 +1,7 @@
-const background = document.querySelector("div")
-let backgroundSize = 400
+const background = document.querySelector("div.background")
+const header = document.querySelector("div.header")
+let backgroundSize = 500
+let headerSize = 100
 let sideSquares = 16
 let maxSquares = sideSquares*sideSquares
 let subtractBorder = sideSquares*2
@@ -9,6 +11,9 @@ let gridItemWidth = ((backgroundSize-subtractBorder)/sideSquares)
 function setBackground(){
     background.style.height = `${backgroundSize}px`
     background.style.width = `${backgroundSize}px`
+    header.style.height = `${headerSize}px`
+    header.style.width = `${backgroundSize}px`
+
 }
 
 function fillBackground(){

@@ -1,11 +1,17 @@
 body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
    /* background-color:rgb(250 211 210);*/
     background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(247, 179, 179));
-    margin-top: 100px;
+    margin-top: 50px;
+}
+.header{
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .background{
     
