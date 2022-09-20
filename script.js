@@ -198,12 +198,29 @@ function fillOutZeros(startId){
     }
 }
 
+let time = 0
+const timerDiv = document.querySelector(".time")
+setInterval(updateTimer, 1000)
+
+function updateTimer(){
+    let minutes = Math.floor(time/60)
+    let seconds = time%60
+    if(seconds<10){
+        timerDiv.textContent = minutes + ":0" + seconds 
+    }
+    else{
+        timerDiv.textContent = minutes + ":" + seconds 
+    }
+    time++
+}
+
 // TODO: 
 // function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
     // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
 // add timer in header
+// add click sound for sweep and mark
 
 setBackground()
 fillBackground()

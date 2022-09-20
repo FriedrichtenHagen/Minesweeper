@@ -16,11 +16,9 @@ body{
 .bombNumber, .timer{
     padding: 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-.bombNumber{
     display: flex;
-}
-.bombNum{
+}      
+.bombNum, .time{
     margin-left: 5px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
