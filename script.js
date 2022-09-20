@@ -61,8 +61,6 @@ var bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
 
 function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
-        bombAudio.currentTime = 0;
-        bombAudio.play();
         letBombsExplode()
         displayGameOverMessage()
         return true
@@ -131,6 +129,8 @@ function checkForSuccess(){
 }
 
 function letBombsExplode(){
+    bombAudio.currentTime = 0;
+    bombAudio.play();
     let bombFields = document.querySelectorAll(".bomb")
     bombFields.forEach(bomb => {
         bomb.textContent = "💣"
@@ -198,7 +198,7 @@ function fillOutZeros(startId){
     }
 }
 
-let time = 0
+let time = 120
 const timerDiv = document.querySelector(".time")
 setInterval(updateTimer, 1000)
 
@@ -211,7 +211,11 @@ function updateTimer(){
     else{
         timerDiv.textContent = minutes + ":" + seconds 
     }
-    time++
+    time--
+    if(time===0){
+        letBombsExplode()
+        displayGameOverMessage()
+    }
 }
 
 // TODO: 
@@ -219,7 +223,7 @@ function updateTimer(){
     // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
-// add timer in header
+    // delay the message to after the explosions
 // add click sound for sweep and mark
 
 setBackground()
