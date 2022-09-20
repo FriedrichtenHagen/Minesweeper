@@ -64,6 +64,7 @@ function explosionCheck(gridItem){
         bombAudio.currentTime = 0;
         bombAudio.play();
         letBombsExplode()
+        displayGameOverMessage()
         return true
     }
 }
@@ -144,6 +145,17 @@ function letBombsExplode(){
             })                
         }, delayInMilliseconds);
 }
+function displayGameOverMessage(){
+    let headerDiv = document.querySelector(".header")
+    let bomb = document.querySelector(".bombNumber")
+    let timer = document.querySelector(".timer")
+    headerDiv.removeChild(bomb)
+    headerDiv.removeChild(timer)
+    headerDiv.classList.add("gameOverMessage")
+    headerDiv.textContent="Game over!"
+
+}
+
 function fillOutZeros(startId){
     // this function should be called when a clicked field is not a bomb and has zero adjBombs
     // this starts our recursion: start in upper left corner
@@ -151,7 +163,6 @@ function fillOutZeros(startId){
     // edge cases: !(adjField<256 && adjField>0) then skip field 
     // if adjBombs === 0 (if already revealed, skip) repeat function from this position, else reveal textContent go to next field
     // if already revealed, skip
-
 
     console.log("ID is"+startId)
     let a1=startId-17 //set adjacent fields
@@ -192,7 +203,7 @@ function fillOutZeros(startId){
     // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
-// add timer and display of leftover bombs
+// add timer in header
 
 setBackground()
 fillBackground()

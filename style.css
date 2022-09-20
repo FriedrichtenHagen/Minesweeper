@@ -22,8 +22,16 @@ body{
 }
 .bombNum{
     margin-left: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
-.background{
+.gameOverMessage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+   .background{
     
     /* background-color: aliceblue; 
     border: 1px solid black; */
