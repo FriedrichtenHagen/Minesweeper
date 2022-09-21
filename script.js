@@ -124,7 +124,10 @@ function checkForSuccess(){
         }
     }
     if(successCounter===256){
-        alert("YOU WON! CONGRATULATIONS")
+        displayWinMessage()
+    }
+    else{
+        console.log(successCounter)
     }
 }
 
@@ -145,15 +148,21 @@ function letBombsExplode(){
             })                
         }, delayInMilliseconds);
 }
-function displayGameOverMessage(){
-    let headerDiv = document.querySelector(".header")
+
+let headerDiv = document.querySelector(".header")
     let bomb = document.querySelector(".bombNumber")
     let timer = document.querySelector(".timer")
+function displayGameOverMessage(){
     headerDiv.removeChild(bomb)
     headerDiv.removeChild(timer)
     headerDiv.classList.add("gameOverMessage")
     headerDiv.textContent="Game over!"
-
+}
+function displayWinMessage(){
+    headerDiv.removeChild(bomb)
+    headerDiv.removeChild(timer)
+    headerDiv.classList.add("gameOverMessage")
+    headerDiv.textContent="You Won!"
 }
 
 function fillOutZeros(startId){
@@ -223,6 +232,7 @@ function updateTimer(){
     // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
+// add a WIN Message!    
 // add click sound for sweep and mark
 // delay zero sweeping and animate it
 
