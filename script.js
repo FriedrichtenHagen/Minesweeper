@@ -235,11 +235,11 @@ function updateTimer(){
 }
 
 // TODO: 
-// function that automatically sweeps all "zero fields" https://stackoverflow.com/questions/34459086/minesweeper-reveal-nearby-tiles-function
-    // bugs: sweeping the other side of the field over the border
+// bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
 // delay zero sweeping and animate it
+// stop the timer on a win (how to stop a function?)
 
 setBackground()
 fillBackground()
