@@ -8,6 +8,11 @@ let subtractBorder = sideSquares*2
 let gridItemHeight = ((backgroundSize-subtractBorder)/sideSquares)
 let gridItemWidth = ((backgroundSize-subtractBorder)/sideSquares)
 
+
+const bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
+const clickAudio = new Audio('mixkit-mouse-click-close-1113.wav');
+const selectAudio = new Audio('mixkit-select-click-1109.wav');
+
 function setBackground(){
     background.style.height = `${backgroundSize}px`
     background.style.width = `${backgroundSize}px`
@@ -26,6 +31,8 @@ function fillBackground(){
         gridItem.style.width = `${gridItemWidth}px`
         gridItem.addEventListener("click", e => {
             if(!explosionCheck(gridItem)){
+                clickAudio.currentTime = 0;
+                clickAudio.play();
                 gridItem.classList.toggle("sweeped")
                 gridItem.classList.remove("marked")
                 if(gridItem.classList[1]=== "0"){
@@ -37,6 +44,8 @@ function fillBackground(){
             checkForSuccess()
         })
         gridItem.addEventListener("contextmenu", e => {
+            selectAudio.currentTime = 0;
+            selectAudio.play();
             gridItem.classList.toggle("marked")
             gridItem.classList.remove("sweeped")
             e.preventDefault()
@@ -56,8 +65,6 @@ function plantBombs(){
         gridItems[bombPos].classList.add("bomb")
     }
 }
-
-var bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
 
 function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
@@ -163,7 +170,7 @@ function displayWinMessage(){
     headerDiv.removeChild(timer)
     headerDiv.classList.add("gameOverMessage")
     headerDiv.textContent="You Won!"
-}
+}   
 
 function fillOutZeros(startId){
     // this function should be called when a clicked field is not a bomb and has zero adjBombs
@@ -232,8 +239,6 @@ function updateTimer(){
     // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
-// add a WIN Message!    
-// add click sound for sweep and mark
 // delay zero sweeping and animate it
 
 setBackground()
