@@ -1,5 +1,6 @@
 const background = document.querySelector("div.background")
 const header = document.querySelector("div.header")
+const body = document.querySelector("body")
 let backgroundSize = 500
 let headerSize = 100
 let sideSquares = 16
@@ -17,7 +18,6 @@ function setBackground(){
     background.style.width = `${backgroundSize}px`
     header.style.height = `${headerSize}px`
     header.style.width = `${backgroundSize}px`
-
 }
 
 function fillBackground(){
@@ -174,12 +174,18 @@ function displayWinMessage(){
     let restartButton = document.createElement("button")
     restartButton.textContent="Try again!"
     restartButton.classList.add("restartButton")
-    background.appendChild(restartButton)
-    restartButton.addEventListener("click", restartGame())
+    body.appendChild(restartButton)
+    restartButton.addEventListener("click", restartGame)
 }   
 
 
 function restartGame(){
+    background.replaceChildren();
+
+
+
+
+
 
 }
 
@@ -251,6 +257,7 @@ function updateTimer(){
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
     // style restart button
+    // write restart function that deletes all previous fields
 // delay zero sweeping and animate it
 // stop the timer on a win (how to stop a function?)
 
