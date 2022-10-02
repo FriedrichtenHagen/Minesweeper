@@ -8,7 +8,6 @@ let subtractBorder = sideSquares*2
 let gridItemHeight = ((backgroundSize-subtractBorder)/sideSquares)
 let gridItemWidth = ((backgroundSize-subtractBorder)/sideSquares)
 
-
 const bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
 const clickAudio = new Audio('mixkit-mouse-click-close-1113.wav');
 const selectAudio = new Audio('mixkit-select-click-1109.wav');
@@ -170,7 +169,19 @@ function displayWinMessage(){
     headerDiv.removeChild(timer)
     headerDiv.classList.add("gameOverMessage")
     headerDiv.textContent="You Won!"
+
+    //create restartButton
+    let restartButton = document.createElement("button")
+    restartButton.textContent="Try again!"
+    restartButton.classList.add("restartButton")
+    background.appendChild(restartButton)
+    restartButton.addEventListener("click", restartGame())
 }   
+
+
+function restartGame(){
+
+}
 
 function fillOutZeros(startId){
     // this function should be called when a clicked field is not a bomb and has zero adjBombs
@@ -236,10 +247,14 @@ function updateTimer(){
 
 // TODO: 
 // bugs: sweeping the other side of the field over the border
+    // check out the not in range bug in console
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
+    // style restart button
 // delay zero sweeping and animate it
 // stop the timer on a win (how to stop a function?)
+
+
 
 setBackground()
 fillBackground()
