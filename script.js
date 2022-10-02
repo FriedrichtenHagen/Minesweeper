@@ -131,6 +131,7 @@ function checkForSuccess(){
     }
     if(successCounter===256){
         displayWinMessage()
+        insertRestartButton()
     }
     else{
         console.log(successCounter)
@@ -151,7 +152,8 @@ function letBombsExplode(){
             bombFields.forEach(bomb => {
                 bomb.textContent = "💥"
                 bomb.classList.add("exploding")
-            })                
+            })        
+            insertRestartButton()        
         }, delayInMilliseconds);
 }
 
@@ -169,18 +171,20 @@ function displayWinMessage(){
     headerDiv.removeChild(timer)
     headerDiv.classList.add("gameOverMessage")
     headerDiv.textContent="You Won!"
-
+}   
+function insertRestartButton(){
     //create restartButton
     let restartButton = document.createElement("button")
     restartButton.textContent="Try again!"
     restartButton.classList.add("restartButton")
     body.appendChild(restartButton)
     restartButton.addEventListener("click", restartGame)
-}   
-
+}
 
 function restartGame(){
+    // clear field
     background.replaceChildren();
+    // reset all variables?
 
 
 
@@ -190,13 +194,8 @@ function restartGame(){
 }
 
 function fillOutZeros(startId){
-    // this function should be called when a clicked field is not a bomb and has zero adjBombs
-    // this starts our recursion: start in upper left corner
-    // go through all adjFields (exclude the edge cases)
-    // edge cases: !(adjField<256 && adjField>0) then skip field 
-    // if adjBombs === 0 (if already revealed, skip) repeat function from this position, else reveal textContent go to next field
-    // if already revealed, skip
-
+    // startId is a STRING! This leads to errors in the calculation
+    startId = parseInt(startId)
     console.log("ID is"+startId)
     let a1=startId-17 //set adjacent fields
     let b1=startId-16
