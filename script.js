@@ -185,7 +185,7 @@ function restartGame(){
     // clear field
     background.replaceChildren();
     // reset all variables?
-
+    fillBackground()
 
 
 
