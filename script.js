@@ -189,15 +189,10 @@ function restartGame(){
     // header needs to be set back to original before plantBombs can work
     createHeader()
     plantBombs()
-
-
-
-
-
-
-
-
-
+    calculateAdjBombs()
+    // remove restartButton
+    restartButton = document.querySelector(".restartButton")
+    body.removeChild(restartButton)
 }
 function createHeader(){
     // (re)add bomb counter and bomb timer
@@ -205,8 +200,6 @@ function createHeader(){
     headerDiv.appendChild(bomb)
     headerDiv.appendChild(timer)
     headerDiv.classList.remove("gameOverMessage")
-    
-    
 }
 
 function fillOutZeros(startId){
@@ -272,10 +265,10 @@ function updateTimer(){
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field 
     // style restart button
-    // write restart function that deletes all previous fields
 // delay zero sweeping and animate it
-// stop the timer on a win (how to stop a function?)
-
+// stop the timer on a win/restart (how to stop a function?)
+// maybe create the header with the function the first time around?
+// idea: time increment on correctly marked bombs
 
 
 setBackground()
