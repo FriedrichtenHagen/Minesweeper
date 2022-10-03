@@ -186,11 +186,27 @@ function restartGame(){
     background.replaceChildren();
     // reset all variables?
     fillBackground()
+    // header needs to be set back to original before plantBombs can work
+    createHeader()
+    plantBombs()
 
 
 
 
 
+
+
+
+
+}
+function createHeader(){
+    // (re)add bomb counter and bomb timer
+    headerDiv.textContent = ""
+    headerDiv.appendChild(bomb)
+    headerDiv.appendChild(timer)
+    headerDiv.classList.remove("gameOverMessage")
+    
+    
 }
 
 function fillOutZeros(startId){
