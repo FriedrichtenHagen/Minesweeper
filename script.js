@@ -269,6 +269,8 @@ function updateTimer(){
 // stop the timer on a win/restart (how to stop a function?)
 // maybe create the header with the function the first time around?
 // idea: time increment on correctly marked bombs
+    // animate the adding of increment on timer
+    // animate the correct marking of a bomb
 
 
 setBackground()
