@@ -273,7 +273,7 @@ function updateTimer(){
 // bugs: sweeping the other side of the field over the border
     // check out the not in range bug in console
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
-    // that should prevent further clicks on the field 
+    // that should prevent further clicks on the field (remove eventlistener?)
     // style restart button
 // delay zero sweeping and animate it
 // stop the timer on a win/restart (how to stop a function?) clearInterval(intervalId)
