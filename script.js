@@ -251,7 +251,7 @@ function fillOutZeros(startId){
 
 let time = 120
 const timerDiv = document.querySelector(".time")
-const intervalId = setInterval(updateTimer, 1000)
+let intervalId = setInterval(updateTimer, 1000)
 
 function updateTimer(){
     let minutes = Math.floor(time/60)
@@ -277,6 +277,7 @@ function updateTimer(){
     // style restart button
 // delay zero sweeping and animate it
 // stop the timer on a win/restart (how to stop a function?) clearInterval(intervalId)
+    // currently the timer goes down faster with each restart???
 // maybe create the header with the function the first time around?
 // idea: time increment on correctly marked bombs
     // animate the adding of increment on timer
