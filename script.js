@@ -166,12 +166,16 @@ function displayGameOverMessage(){
     headerDiv.removeChild(timer)
     headerDiv.classList.add("gameOverMessage")
     headerDiv.textContent="Game over!"
+    // stop timer
+    clearInterval(intervalId)
 }
 function displayWinMessage(){
     headerDiv.removeChild(bomb)
     headerDiv.removeChild(timer)
     headerDiv.classList.add("gameOverMessage")
     headerDiv.textContent="You Won!"
+    // stop timer
+    clearInterval(intervalId)
 }   
 function insertRestartButton(){
     //create restartButton
@@ -197,6 +201,8 @@ function restartGame(){
 
     // reset timer
     time = 120
+    intervalId = setInterval(updateTimer, 1000)
+
 }
 function createHeader(){
     // (re)add bomb counter and bomb timer
