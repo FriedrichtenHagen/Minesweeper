@@ -160,6 +160,7 @@ function letBombsExplode(){
 let headerDiv = document.querySelector(".header")
     let bomb = document.querySelector(".bombNumber")
     let timer = document.querySelector(".timer")
+
 function displayGameOverMessage(){
     headerDiv.removeChild(bomb)
     headerDiv.removeChild(timer)
@@ -193,6 +194,9 @@ function restartGame(){
     // remove restartButton
     restartButton = document.querySelector(".restartButton")
     body.removeChild(restartButton)
+
+    // reset timer
+    time = 120
 }
 function createHeader(){
     // (re)add bomb counter and bomb timer
@@ -241,7 +245,7 @@ function fillOutZeros(startId){
 
 let time = 120
 const timerDiv = document.querySelector(".time")
-setInterval(updateTimer, 1000)
+const intervalId = setInterval(updateTimer, 1000)
 
 function updateTimer(){
     let minutes = Math.floor(time/60)
@@ -266,12 +270,12 @@ function updateTimer(){
     // that should prevent further clicks on the field 
     // style restart button
 // delay zero sweeping and animate it
-// stop the timer on a win/restart (how to stop a function?)
+// stop the timer on a win/restart (how to stop a function?) clearInterval(intervalId)
 // maybe create the header with the function the first time around?
 // idea: time increment on correctly marked bombs
     // animate the adding of increment on timer
     // animate the correct marking of a bomb
-
+// add more impressive Win animation
 
 setBackground()
 fillBackground()
