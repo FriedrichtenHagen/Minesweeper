@@ -283,6 +283,7 @@ function updateTimer(){
     // animate the adding of increment on timer
     // animate the correct marking of a bomb
 // add more impressive Win animation
+// add hover animation
 
 setBackground()
 fillBackground()
