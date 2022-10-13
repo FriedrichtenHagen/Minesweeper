@@ -284,6 +284,7 @@ function updateTimer(){
     // animate the correct marking of a bomb
 // add more impressive Win animation
 // add hover animation
+// there is a bug with the success message. Sometimes it is not displayed correctly
 
 setBackground()
 fillBackground()
