@@ -118,24 +118,21 @@ function calculateAdjBombs(){
         }
     }
 }
-
+// go through the surrounding fields
 function checkAdjFields(surroundingArray, c, adjBombs){
     let grids = document.querySelectorAll(".gridItem")
     // console.log("current fieldID: "+ c)
-        for(let sI = 0; sI<surroundingArray.length; sI++){
-            let g = surroundingArray[sI]
-            // console.log("neighboring fieldID: " +g +" Neighborarrypos "+ sI)
-            if(grids[g]!=undefined && grids[g].classList[1] === "bomb"){
-                adjBombs++
-                // console.log("Bombs: "+adjBombs)  
-            }
-            else{
-                // console.log("not a bomb")
-            }   
+    for(let sI = 0; sI<surroundingArray.length; sI++){
+        let g = surroundingArray[sI]
+        // check if field is not undefined and a bomb and increase bomb counter
+        if(grids[g]!=undefined && grids[g].classList[1] === "bomb"){
+            adjBombs++  
         }
-        grids[c].classList.add(`${adjBombs}`)
-        grids[c].textContent = adjBombs
+    }
+    grids[c].classList.add(`${adjBombs}`)
+    grids[c].textContent = adjBombs
 }
+// check if all fields have been marked/sweeped
 function checkForSuccess(){
     let fields = document.querySelectorAll(".gridItem")
     let successCounter = 0
@@ -301,6 +298,7 @@ function updateTimer(){
 // add more impressive Win animation
 // add hover animation
 // there is a bug with the success message. Sometimes it is not displayed correctly
+// make the queryselector for gridItem global
 
 setBackground()
 fillBackground()
