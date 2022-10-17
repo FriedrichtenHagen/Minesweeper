@@ -1,3 +1,4 @@
+// set global variables
 const background = document.querySelector("div.background")
 const header = document.querySelector("div.header")
 const body = document.querySelector("body")
@@ -8,32 +9,37 @@ let maxSquares = sideSquares*sideSquares
 let subtractBorder = sideSquares*2
 let gridItemHeight = ((backgroundSize-subtractBorder)/sideSquares)
 let gridItemWidth = ((backgroundSize-subtractBorder)/sideSquares)
-
+// sound effects
 const bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
 const clickAudio = new Audio('mixkit-mouse-click-close-1113.wav');
 const selectAudio = new Audio('mixkit-select-click-1109.wav');
 
+// create background field
 function setBackground(){
     background.style.height = `${backgroundSize}px`
     background.style.width = `${backgroundSize}px`
     header.style.height = `${headerSize}px`
     header.style.width = `${backgroundSize}px`
 }
-
+// create grid on background
 function fillBackground(){
     for(let i=0; i<maxSquares; i++){
+        // create gridItem
         const gridItem = document.createElement("div")
         background.appendChild(gridItem)
         gridItem.setAttribute("id", i)
         gridItem.setAttribute("class","gridItem")
         gridItem.style.height = `${gridItemHeight}px`
         gridItem.style.width = `${gridItemWidth}px`
+        // add click event listener
         gridItem.addEventListener("click", e => {
+            // check for bomb
             if(!explosionCheck(gridItem)){
                 clickAudio.currentTime = 0;
                 clickAudio.play();
                 gridItem.classList.toggle("sweeped")
                 gridItem.classList.remove("marked")
+                // check to see if clicked field has zero adjacent bombs
                 if(gridItem.classList[1]=== "0"){
                     let startId = gridItem.getAttribute("id") 
                     fillOutZeros(startId) 
@@ -42,29 +48,31 @@ function fillBackground(){
             }
             checkForSuccess()
         })
+        // add right click functionality
         gridItem.addEventListener("contextmenu", e => {
             selectAudio.currentTime = 0;
             selectAudio.play();
             gridItem.classList.toggle("marked")
             gridItem.classList.remove("sweeped")
-            e.preventDefault()
+            e.preventDefault() // prevent the context menu from showing up on right click
             checkForSuccess()
         })
     }
 }
-
+// randomly place bombs
 function plantBombs(){
     let bombNumber = Math.floor(Math.random()*20)+20
     let gridItems = document.querySelectorAll(".gridItem")
+    // display the number of bombs
     let bombNumField = document.querySelector(".bombNum")
     bombNumField.textContent = bombNumber
-
+    // place bombs at random positions in the grid
     for(let b=0; b<bombNumber; b++){
         let bombPos = Math.floor(Math.random()*maxSquares)
         gridItems[bombPos].classList.add("bomb")
     }
 }
-
+// check if the clicked field is a bomb
 function explosionCheck(gridItem){
     if(gridItem.classList[1] === "bomb"){
         letBombsExplode()
@@ -72,25 +80,33 @@ function explosionCheck(gridItem){
         return true
     }
 }
+// calculate how many bombs are surrounding each field
 function calculateAdjBombs(){
     let grids = document.querySelectorAll(".gridItem")
     let adjBombs = 0
     for(let c=0; c<maxSquares; c++){
         adjBombs=0 //reset bombcounter
-        let a1=c-17 //set adjacent fields
+        /*   the following variables represent the fields adjacent to the current field (X)
+             these numbers are the result of one row having 16 fields
+             a b c
+             d X e
+             f g h
+        */
+        let a1=c-17 
         let b1=c-16
-        let c1=c-15 // abc
-        let d1=c-1  // dXe
-        let e1=c+1  // fgh
+        let c1=c-15
+        let d1=c-1  
+        let e1=c+1  
         let f1=c+15
         let g1=c+16
         let h1=c+17
 
-        //edge case left border of matrix
+        // edge case: left border of grid
         if(c===0 || c%16===0){
             let surroundingArrayLeft = [b1,c1,e1,g1,h1]
             checkAdjFields(surroundingArrayLeft, c, adjBombs)
         }
+        // edge case: right border of grid
         else if(c===15 || c===31 || c===47 || c===63 || c===79 || c===95|| c===111 || c===127||c===143||c===159||c===175||c===191||c===207||c===223||c===239||c===255){
             let surroundingArrayRight = [a1,b1,d1,f1,g1]
             checkAdjFields(surroundingArrayRight, c, adjBombs)
