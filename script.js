@@ -59,6 +59,23 @@ function fillBackground(){
         })
     }
 }
+
+function onLeftClick(){
+    if(!explosionCheck(gridItem)){
+        clickAudio.currentTime = 0;
+        clickAudio.play();
+        gridItem.classList.toggle("sweeped")
+        gridItem.classList.remove("marked")
+        // check to see if clicked field has zero adjacent bombs
+        if(gridItem.classList[1]=== "0"){
+            let startId = gridItem.getAttribute("id") 
+            fillOutZeros(startId) 
+            gridItem.textContent = " " 
+        }
+    }
+    checkForSuccess()
+}
+
 // randomly place bombs
 function plantBombs(){
     let bombNumber = Math.floor(Math.random()*20)+20
@@ -282,11 +299,18 @@ function updateTimer(){
     }
 }
 
+function removeListeners(){
+    let gridItems = document.querySelectorAll(".gridItem")
+    gridItems.forEach(field => {
+        field.removeEventListener("click", )
+    })
+}
+
+
 // TODO: 
 // bugs: sweeping the other side of the field over the border
 // add a div that displays a GAME OVER Message. Include the possibility of restarting
     // that should prevent further clicks on the field (remove eventlistener?)
-    // style restart button
 // delay zero sweeping and animate it
 // stop the timer on a win/restart (how to stop a function?) clearInterval(intervalId)
     // currently the timer goes down faster with each restart???
