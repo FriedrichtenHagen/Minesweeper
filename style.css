@@ -86,15 +86,7 @@ body{
     min-height: 77px;
     border-radius: 46px;
     background-color: rgb(255 204 7);
-    -webkit-transition: background-color 500ms linear;
-    -ms-transition: background-color 5000ms linear;
-    transition: background-color 500ms linear;
-
 }
 .restartButton:hover{
-    -webkit-transition: background-color 500ms linear;
-    -ms-transition: background-color 5000ms linear;
-    transition: background-color 500ms linear;
-    background-color: rgb(182, 10, 10);
-    transform: 1.1;
+    scale: 1.1;
 }
