@@ -12,7 +12,7 @@ Here is a link to a live demo: https://friedrichtenhagen.github.io/Minesweeper/
 
 I originally started with the idea to make a drawing board. The idea was to allow the user to color fields of a grid by click. Eventually the idea to turn the grid into the field for a minesweeper game arose. 
 
-If you missed out on this great game in your youth (or, as many did not, did not understand the rules), here is an explanation: https://minesweepergame.com/strategy/how-to-play-minesweeper.php
+If you missed out on this great game in your youth (or, as many did, did not understand the rules), here is an explanation: https://minesweepergame.com/strategy/how-to-play-minesweeper.php
 
 Creating the function for randomly spreading the bombs and the logic for winning and losing was relatively easy. The problem that arose was that all the fields with zero surrounding bombs needed to be clicked individually. This is annoying since every surrounding field can safely be clicked. Applying this process automatically greatly increases the fun of the game. 
 To clear all connected fields with zero surrounding bombs, I created a recursive function that goes through all neighboring fields with a surrounding bomb count of zero. 
