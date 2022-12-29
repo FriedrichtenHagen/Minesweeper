@@ -10,9 +10,9 @@ let subtractBorder = sideSquares*2
 let gridItemHeight = ((backgroundSize-subtractBorder)/sideSquares)
 let gridItemWidth = ((backgroundSize-subtractBorder)/sideSquares)
 // sound effects
-const bombAudio = new Audio('mixkit-sea-mine-explosion-1184.wav');
-const clickAudio = new Audio('mixkit-mouse-click-close-1113.wav');
-const selectAudio = new Audio('mixkit-select-click-1109.wav');
+const bombAudio = new Audio('sound/mixkit-sea-mine-explosion-1184.wav');
+const clickAudio = new Audio('sound/mixkit-mouse-click-close-1113.wav');
+const selectAudio = new Audio('sound/mixkit-select-click-1109.wav');
 
 // create background field
 function setBackground(){
